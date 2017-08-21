@@ -1,0 +1,54 @@
+{% load staticfiles %}
+<!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'vendor/popper/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+    <script src="{% static 'vendor/scrollreveal/scrollreveal.min.js' %}"></script>
+    <script src="{% static 'vendor/magnific-popup/jquery.magnific-popup.min.js' %}"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="{% static 'js/creative.min.js' %}"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="{% static 'js/ie10-viewport-bug-workaround.js' %}"></script>
+
+    <script>
+
+    {% comment %}
+     function updateCartItemCount(){
+     	var badge = $("#cart-count-badge");
+
+     	$.ajax({
+     		type: "GET",
+     		url: "{% url 'item_count' %}",
+     		success: function(data){
+     			badge.text(data.count);
+     			console.log(data.count);
+     		},
+     		error: function(response, error) {
+     			console.log(response)
+     			console.log(error);
+     		}
+
+     	})
+
+     }
+
+
+     $(document).ready(function(){
+     	
+     	updateCartItemCount()
+     })
+
+     {% endcomment %}
+
+     </script>
