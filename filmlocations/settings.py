@@ -130,3 +130,5 @@ STATICFILES_DIRS = (
     #os.path.join(BASE_DIR, "static_in_env"),
     #'/var/www/static/',
 )
+
+ALLOWED_SIGNUP_DOMAINS = ['*']

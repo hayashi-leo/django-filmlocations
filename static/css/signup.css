@@ -1,0 +1,19 @@
+.signup {
+  width: 70%;
+  border-radius: 7px;
+  border-style: solid;
+  border-color: #f6f6f6;
+  margin: 10px auto 0;
+}
+
+.signup {
+  padding: 30px 20px;
+}
+
+.signup form {
+  margin-top: 20px;
+}
+
+.signup h2 {
+  margin: 0;
+}

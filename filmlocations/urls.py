@@ -15,9 +15,11 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from newsletter.views import home
+from newsletter import views as newsletter_views
+from authentication import views as auth_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home, name='home'),
+    url(r'^$', newsletter_views.home, name='home'),
+    url(r'^signup/$', auth_views.signup, name='signup'),
 ]

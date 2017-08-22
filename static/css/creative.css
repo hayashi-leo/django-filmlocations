@@ -40,6 +40,10 @@ p {
   line-height: 1.5;
   margin-bottom: 20px; }
 
+.bg-signup {
+  color: white;
+  background-color: #F05F40 !important; }
+
 .bg-primary {
   background-color: #F05F40 !important; }
 
