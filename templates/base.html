@@ -13,24 +13,31 @@
 
     <title>{% block head_title %}Film Location Listing MVP{% endblock %}</title>
 
+    {% block css %}
     {% include 'head_css.html' %}
+    {% endblock %}
 
     {% block head %} {% endblock %}
 
-    <style>
-      {% block style %}{% endblock %}
-    </style>
+    {% block style %}
+
+    {% endblock %}
   </head>
 
   <body id="page-top">
 
+    {% block navbar %}
     {% include 'navbar.html' %}
-
-    {% block masthead %} {% endblock %}
+    {% endblock%}
 
     {% block content %} {% endblock %}
 
+    {% block footer %}
+    {% endblock %}
+
+    {% block javascript %}
     {% include "javascript.html" %}
+    {% endblock %}
 
     <script>
     $(document).ready(function(){

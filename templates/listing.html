@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+{% block head_title %}Catalog{% endblock %}
+
+{% block css %}
+{{ block.super }}
+{% include 'materialize_css.html' %}
+<link rel="stylesheet" href="{% static 'css/listing.css' %}" type="text/css" />
+{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+{% block navbar %}
+<style>
+
+#mainNav .navbar-brand {
+    color: Black;
+}
+
+#mainNav .navbar-nav > li.nav-item > a.nav-link {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: Black;
+}
+
+</style>
+{{ block.super }}
+
+{% endblock %}
+
+{% block content %}
+    <section id="featured-slider">
+      <div class="container-fluid">
+         <div class="slider">
+            <ul class="slides">
+                {% for location in featured_locations %}
+                <li>
+                    <img src="{% static 'img/lake.jpg' %}" alt="{{ location.title }}" class="opaque">
+                    <div class="caption center-align">
+                        <h1>
+                            {{ location.title }} <br/>
+                            <small class="light text-lighten-3 hide-on-small-only">{{ location.description | truncatechars:120 }} </small>
+                        </h1>
+                    </div>
+                </li>
+                <li>
+                    <img src="{% static 'img/mountain.jpg' %}" alt="{{ location.title }}" class="opaque">
+                    <div class="caption center-align">
+                        <h1>
+                            {{ location.title }} <br/>
+                            <small class="light text-lighten-3 hide-on-small-only">{{ location.description | truncatechars:120 }} </small>
+                        </h1>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                {% for location in locations %}
+
+                <div class="col">
+                    <div class=""card dpg-album-card">
+                        <div class="card-image">
+                            <img src="{{ location.thumb.url }}" alt="{{ location.title }}" class="dpg-album-card-image" />
+                        </div>
+                        <div class="card-content">
+                            <span class="card-title">{{ location.title }}</span>
+                            <p> {{ location.description | truncatechars:120 }}</p>
+                        </div>
+                        <div class="card-action">
+                            <a href="{% url 'location' location.slug %}">
+                                More Images
+                            </a>
+                        </div>
+                    </div>  <!-- .card dpg-album-card -->
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="pagination center">
+        <span class="step-links">
+            {% if locations.has_previous %}
+            <a href="?page={{ locations.previous_page_number }} " class="waves-effect waves-light btn btn-large">Previous</a>
+            {% endif %}
+
+            {% if locations.has_next %}
+            <a href="?page={{ locations.next_page_number }}" class="waves-effect waves-light btn btn-large">Next</a>
+            {% endif %}
+        </span>
+    </div>
+{% endblock %}
+
+{% block footer %}
+{% include 'contact.html' %}
+{% endblock %}
+
+{% block javascript %}
+    {{ block.super }}
+    {% include 'materialize_js.html' %}
+    <script src="{% static 'js/listing.js' %}"></script>
+
+{% endblock %}

@@ -6,6 +6,7 @@
 {% block head_title %}Welcome | {{ block.super }}{% endblock %}
 
 {% block style %}
+<style>
 .navbar-static-top {
 	margin-bottom: 0px !important;
 }
@@ -21,24 +22,22 @@
 	background-position-y: -272px;
 	{% endif %}
 }
-
+</style>
 {% endblock %}
 
-{% block masthead %}
-	<header class="masthead">
+{% block content %}
+    <header class="masthead">
       <div class="header-content">
         <div class="header-content-inner">
           <h1 id="homeHeading">Best Locations in Texas for Filming and Photography</h1>
 			<br> <br> <br> <br>
           <hr>
           <p>Powered by Django Framework</p>
-          <a class="btn btn-primary btn-xl" href="#about">Join for Free</a>
+          <a class="btn btn-primary btn-xl" href="{% url 'catalog_listing' %}">Join for Free</a>
         </div>
       </div>
     </header>
-{% endblock %}
 
-{% block content %}
 	<section class="bg-primary" id="about">
       <div class="container">
         <div class="row">

@@ -22,7 +22,27 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', newsletter_views.home, name='home'),
     url(r'^signup/$', auth_views.signup, name='signup'),
+
+    url(r'^catalog/', include('catalog.urls')),
 ]
 
 # Add Django site authentication urls (for login, logout, password management)
 urlpatterns += [url(r'^accounts/', include('django.contrib.auth.urls')),]
+
+"""
+Serving static files in development
+Make sure the 'django.contrib.staticfiles' app is added in our INSTALLED_APP under settings.
+"""
+
+"""
+Serving media files in development
+"""
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG is True:
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)
+
+
