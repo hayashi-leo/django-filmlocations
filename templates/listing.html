@@ -40,20 +40,11 @@
             <ul class="slides">
                 {% for location in featured_locations %}
                 <li>
-                    <img src="{% static 'img/lake.jpg' %}" alt="{{ location.title }}" class="opaque">
+                    <img src="{{ location.get_image_url }}" alt="{{ location.title }}" class="opaque">
                     <div class="caption center-align">
                         <h1>
                             {{ location.title }} <br/>
-                            <small class="light text-lighten-3 hide-on-small-only">{{ location.description | truncatechars:120 }} </small>
-                        </h1>
-                    </div>
-                </li>
-                <li>
-                    <img src="{% static 'img/mountain.jpg' %}" alt="{{ location.title }}" class="opaque">
-                    <div class="caption center-align">
-                        <h1>
-                            {{ location.title }} <br/>
-                            <small class="light text-lighten-3 hide-on-small-only">{{ location.description | truncatechars:120 }} </small>
+                            <small class="light text-lighten-3 hide-on-small-only">{{ location.summary | truncatechars:120 }} </small>
                         </h1>
                     </div>
                 </li>
@@ -66,7 +57,7 @@
                 {% for location in locations %}
 
                 <div class="col">
-                    <div class=""card dpg-album-card">
+                    <div class="card dpg-album-card">
                         <div class="card-image">
                             <img src="{{ location.thumb.url }}" alt="{{ location.title }}" class="dpg-album-card-image" />
                         </div>

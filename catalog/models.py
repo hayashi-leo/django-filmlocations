@@ -98,6 +98,18 @@ class Location(models.Model):
         ### see url 'location-detail'
         return reverse('location-detail', kwargs={'pk': self.pk})
 
+    def get_image_url(self):
+        """
+        django 'related_name' attribute specifies the name of the reverse relation from your
+        model Image back to your model Location.  If 'related_name' is omitted when specifying
+        the ForeignKey, django creates one using the name of your model with suffix '_set'.
+        e.g. 'self.location_set.first()'
+        """
+        img = self.related_image.first()
+        if img:
+            return img.image.url
+        return img  # None
+
     def display_category(self):
         """
         Creates a string for the Category.  This is required to display category in Admin
