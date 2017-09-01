@@ -23,6 +23,7 @@ def listing(request):
 
 class LocationDetail(DetailView):
     model = Location
+    template_name = 'catalog/listing_detail.html'
 
     def get_context_data(self, **kwargs):
         # Call the base implementation first to get a context
