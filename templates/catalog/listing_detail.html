@@ -177,22 +177,34 @@
             {% endfor %}
         ];
 
-        var map;
-        function initialize() {
-          var mapOptions = {
-            zoom: 8,
-            center: new google.maps.LatLng(-34.397, 150.644),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-          map = new google.maps.Map(document.getElementById('map_canvas'),
-              mapOptions);
-          console.log("google map initialized");
+        {% if location.is_visible %}
+        var map, address;
+        var geocoder = new google.maps.Geocoder();
 
-          console.log(map);
+        function initialize() {
+
+          geocoder.geocode( {'address': '{{ location.street }},{{ location.city }}' },  function(results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+
+                var mapOptions = {
+                    zoom: 8,
+                    center: new google.maps.LatLng(latitude, longitude),
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                  };
+                  map = new google.maps.Map(document.getElementById('map_canvas'),
+                      mapOptions);
+                  console.log("google map initialized");
+
+                  console.log(map);
+            }
+          });
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
 
+        {% endif %}
     </script>
 
 {% endblock %}
