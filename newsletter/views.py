@@ -3,9 +3,14 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-def home(request):
-    return render(request, 'home.html')
+from catalog.models import Category, Location
 
+
+def home(request):
+    categories = Category.objects.all()[:5]
+    locations = Location.objects.all()
+
+    return render(request, 'home.html', {'locations' : locations })
 
 """
 If you're using function-based views, the easiest way to restrict access to your

@@ -47,7 +47,25 @@
 
 {% block content %}
     {% if location.is_visible %}
-        <section class="">
+        <section id="featured-slider">
+          <div class="container-fluid">
+              <div class="slider">
+                <ul class="slides">
+                    {% for item in images %}
+                    <li>
+                        <img src="{{ location.get_image_url }}" alt="{{ location.title }}" class="opaque">
+                        <div class="caption center-align">
+                            <h1>
+                                {{ location.title }} <br/>
+                                <small class="light text-lighten-3 hide-on-small-only">{{ location.summary | truncatechars:120 }} </small>
+                            </h1>
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+              </div>
+          </div>
+
           <div class="container">
             <header class="col s12 m12 l10 offset-l1">
                 <h1>{{ location.title }}</h1>
@@ -74,8 +92,6 @@
                 <p>Tags: {{ location.tags }}</p>
             </footer>
           </div>
-
-
         </section>
 
         <!-- PhotoSwipe -->
