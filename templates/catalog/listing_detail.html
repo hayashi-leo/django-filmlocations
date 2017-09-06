@@ -53,7 +53,7 @@
                 <ul class="slides">
                     {% for item in images %}
                     <li>
-                        <img src="{{ location.get_image_url }}" alt="{{ location.title }}" class="opaque">
+                        <img src="{{ item.thumb.url }}" alt="{{ location.title }}" class="opaque">
                         <div class="caption center-align">
                             <h1>
                                 {{ location.title }} <br/>
