@@ -56,8 +56,8 @@
         <div class="row no-gutter popup-gallery">
           {% for location in locations %}
           <div class="col-lg-4 col-sm-6">
-            <a class="portfolio-box" href="{{ location.get_image_url }}">
-              <img class="img-fluid" src="{{ location.get_image_url }}" alt="">
+            <a class="portfolio-box" href="{{ location.thumb.url }}">
+              <img class="img-fluid" src="{{ location.thumb.url }}" alt="">
               <div class="portfolio-box-caption">
                 <div class="portfolio-box-caption-content">
                   <div class="project-category text-faded">
