@@ -33,7 +33,7 @@
 			<br> <br> <br> <br>
           <hr>
           <p>Powered by Django Framework</p>
-          <a class="btn btn-primary btn-xl" href="{% url 'catalog_listing' %}">Join for Free</a>
+          <a class="btn btn-primary btn-xl" href="#services">Join for Free</a>
         </div>
       </div>
     </header>
@@ -45,7 +45,7 @@
             <h2 class="section-heading text-white">Great Locations and Sceneries in Texas</h2>
             <hr class="light">
             <p class="text-faded">We have everything you need to start your next indie film project.  Browse from hundreds of great locations and sceneries available in Texas.</p>
-            <a class="btn btn-default btn-xl sr-button" href="#services">Browse listing</a>
+            <a class="btn btn-default btn-xl sr-button" href="{% url 'catalog_listing' %}">Browse listing</a>
           </div>
         </div>
       </div>
@@ -74,13 +74,6 @@
         </div>
       </div>
     </section>
-
-    <div class="call-to-action bg-dark">
-      <div class="container text-center">
-        <h2>Download our free Mobile App</h2>
-        <a class="btn btn-default btn-xl sr-button" href="">Download Now!</a>
-      </div>
-    </div>
 
     {% include 'contact.html' %}
 
