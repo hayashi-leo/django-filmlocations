@@ -67,6 +67,9 @@
           </div>
 
           <div class="container">
+            {% if user.is_authenticated %}
+                <a class="btn btn-default" href="{% url 'location_update_slug' location.slug %}"><span class="glyphicon glyphicon-pencil"></span></a>
+            {% endif %}
             <header class="col s12 m12 l10 offset-l1">
                 <h1>{{ location.title }}</h1>
             </header>
