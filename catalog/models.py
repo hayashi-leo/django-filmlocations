@@ -8,7 +8,7 @@ from django.utils import timezone
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from imagekit.models import ProcessedImageField
-from imagekit.processors import ResizeToFit
+from imagekit.processors import ResizeToFit, ResizeToFill
 
 import thumbs  #### this is not required, you can also delete thumbs.py
 import uuid
@@ -64,7 +64,7 @@ class Location(models.Model):
     likes = models.IntegerField(null=True, blank=True, default=0)
     category = models.ManyToManyField('Category', help_text="Select a category for this location")
 
-    thumb = ProcessedImageField(upload_to='catalog/images', processors=[ResizeToFit(300)], format='JPEG',
+    thumb = ProcessedImageField(upload_to='catalog/images', processors=[ResizeToFill(650,350)], format='JPEG',
                                 options={'quality': 90})
 
 
